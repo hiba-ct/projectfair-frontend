@@ -1,12 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import View from '../components/View';
 import Header from '../components/Header';
 import Profile from '../components/Profile';
+import { tokenAuthContext } from '../contexts/AuthContextApi';
 
 const Dashboard = () => {
+  const {iAutherised,setIsAutherised}=useContext(tokenAuthContext)
   const [username, setUsername] = useState("");
 
   useEffect(() => {
+    
     const userData = sessionStorage.getItem("existingUser");
     if (userData) {
       const parsedUser = JSON.parse(userData); // Parse the JSON data once retrieved
